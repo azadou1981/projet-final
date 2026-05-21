@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Finaliser la commande - Crystal{% endblock %}
+
+{% block body %}
+<h1>Finaliser ma commande</h1>
+
+<table class="panier-table">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in panier %}
+        <tr>
+            <td>{{ item.produit.nom }}</td>
+            <td>{{ item.quantite }}</td>
+            <td>{{ item.total }} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"><strong>Total</strong></td>
+            <td><strong>{{ total }} €</strong></td>
+        </tr>
+    </tfoot>
+</table>
+
+<a href="{{ path('app_commande_confirmer') }}" class="btn">Confirmer la commande</a>
+{% endblock %}

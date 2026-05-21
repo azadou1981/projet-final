@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Contact - Crystal{% endblock %}
+ 
+{% block body %}
+<div class="hero">
+    <h1>Contactez-nous</h1>
+    <p>On vous écoute</p>
+</div>
+ 
+<section class="produits-section">
+    <div class="conteneur" style="max-width: 700px;">
+        <h2>Coordonnées</h2>
+        
+        <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-top: 1.5rem;">
+            <p style="margin: 1rem 0;">
+                <strong>Email :</strong> contact@crystal-bijoux.fr
+            </p>
+            <p style="margin: 1rem 0;">
+                <strong>Téléphone :</strong> 01 23 45 67 89
+            </p>
+            <p style="margin: 1rem 0;">
+                <strong>Adresse :</strong><br>
+                25 Avenue des Champs<br>
+                69000 Lyon, France
+            </p>
+            <p style="margin: 1rem 0;">
+                <strong>Horaires :</strong><br>
+                Lundi – Vendredi : 9h00 – 18h00<br>
+                Samedi : 10h00 – 17h00
+            </p>
+        </div>
+ 
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{{ path('app_boutique') }}" class="btn">Découvrir la boutique</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,23 +1,292 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Crystal{% endblock %}</title>
+    {% block stylesheets %}
+    <style>
+        /* ===== RESET ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* ===== GÉNÉRAL ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+        }
+        .conteneur { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* ===== HEADER ===== */
+        header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        header .conteneur {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a { color: white; text-decoration: none; transition: color 0.3s; }
+        header .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; }
+        header nav a { margin-left: 1.5rem; font-size: 0.95rem; }
+        header nav a:hover { color: #f0a500; }
+        .badge-panier { 
+            background: #f0a500; 
+            color: #1a1a1a; 
+            border-radius: 50%; 
+            padding: 2px 8px; 
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 50%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            margin-bottom: 3rem;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; animation: fadeInDown 0.8s ease; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; color: #ccc; }
+        
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-block;
+            background: #f0a500;
+            color: #1a1a1a;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: #d49400; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(240,165,0,0.4); }
+        .btn-petit {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn-petit:hover { background: #333; transform: translateY(-2px); }
+        
+        /* ===== GRILLE PRODUITS ===== */
+        .produits-section { padding: 2rem 0 4rem; }
+        .produits-section h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+        .produits-grille {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .produit-carte {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .produit-carte:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .produit-carte img { 
+            width: 100%; 
+            height: 260px; 
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .produit-carte:hover img { transform: scale(1.05); }
+        .produit-carte h3 { padding: 1rem 1rem 0.5rem; font-size: 1.1rem; }
+        .produit-carte .prix { 
+            padding: 0 1rem 1rem; 
+            font-size: 1.3rem; 
+            font-weight: bold; 
+            color: #f0a500;
+        }
+        .produit-carte .btn-petit { margin: 0 1rem 1rem; }
+        
+        /* ===== TABLEAU PANIER / COMMANDES ===== */
+        .panier-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 2rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .panier-table th, .panier-table td { 
+            padding: 1rem; 
+            text-align: left; 
+            border-bottom: 1px solid #eee;
+        }
+        .panier-table th { 
+            background: #1a1a1a;
+            color: white;
+            font-weight: 600;
+        }
+        .panier-table tr:hover td { background: #f9f9f9; }
+        .btn-supprimer { color: #e74c3c; text-decoration: none; font-weight: bold; }
+        .btn-supprimer:hover { color: #c0392b; }
+        
+        /* ===== STATS ADMIN ===== */
+        .stats { display: flex; gap: 2rem; margin: 2rem 0; }
+        .stat-carte {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            flex: 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .stat-carte:hover { transform: translateY(-3px); }
+        .stat-carte h3 { font-size: 2.8rem; color: #f0a500; margin-bottom: 0.5rem; }
+        .stat-carte p { color: #666; font-size: 1.1rem; }
+        
+        /* ===== DÉTAIL PRODUIT ===== */
+        .produit-detail { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 3rem; 
+            max-width: 1000px; 
+            margin: 2rem auto; 
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .produit-detail img { 
+            width: 100%; 
+            border-radius: 8px;
+            transition: transform 0.5s;
+        }
+        .produit-detail img:hover { transform: scale(1.02); }
+        .produit-detail .prix { font-size: 2rem; color: #f0a500; margin: 1rem 0; font-weight: bold; }
+        .produit-detail .btn { margin-top: 1.5rem; }
+        .produit-infos p { margin: 0.8rem 0; color: #555; }
+        
+        /* ===== PAGE SUCCÈS ===== */
+        .succes-page { text-align: center; padding: 5rem 2rem; }
+        .succes-page h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .succes-page p { font-size: 1.1rem; margin: 0.5rem 0; }
+        .succes-page .btn { margin-top: 2rem; }
+        
+        /* ===== FORMULAIRE ===== */
+        form { max-width: 500px; margin: 2rem auto; }
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #f0a500;
+            outline: none;
+            box-shadow: 0 0 5px rgba(240,165,0,0.3);
+        }
+        form label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333; }
+        
+        /* ===== FLASH MESSAGES ===== */
+        .flash-succes { 
+            background: #d4edda; 
+            color: #155724; 
+            padding: 1rem; 
+            margin: 1rem 0; 
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+            animation: slideIn 0.5s ease;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        /* ===== TITRES ===== */
+        h1 { text-align: center; margin: 2rem 0; font-size: 2.2rem; }
+        h2 { font-size: 1.6rem; margin: 1.5rem 0; }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header .conteneur { flex-direction: column; gap: 1rem; }
+            header nav a { margin: 0 0.8rem; }
+            .hero h1 { font-size: 2rem; }
+            .produits-grille { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            .produit-detail { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; }
+            .panier-table { font-size: 0.9rem; }
+            .panier-table th, .panier-table td { padding: 0.7rem; }
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="conteneur">
+            <a href="{{ path('app_accueil') }}" class="logo">CRYSTAL</a>
+            <nav>
+                <a href="{{ path('app_accueil') }}">Accueil</a>
+                <a href="{{ path('app_boutique') }}">Boutique</a>
+                <a href="{{ path('app_about') }}">À propos</a>
+                <a href="{{ path('app_contact') }}">Contact</a>
+                {% if app.user %}
+                    <a href="{{ path('app_profil_commandes') }}">Mes commandes</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_admin') }}">Admin</a>
+                    {% endif %}
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                {% endif %}
+                <a href="{{ path('app_panier') }}">Panier <span class="badge-panier">{{ nombreArticles ?? 0 }}</span></a>
+            </nav>
+        </div>
+    </header>
 
-        {% block javascripts %}
-        {% endblock %}
-
-        {% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
-        {% if frankenphpHotReload %}
-        <meta name="frankenphp-hot-reload:url" content="{{ frankenphpHotReload }}">
-        <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
-        <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
-    </head>
-    <body>
+    <main class="conteneur">
+        {% for message in app.flashes('success') %}
+            <div class="flash-succes">{{ message }}</div>
+        {% endfor %}
         {% block body %}{% endblock %}
-    </body>
+    </main>
+
+    <footer>
+        <p>&copy; {{ 'now'|date('Y') }} Crystal - Tous droits réservés</p>
+    </footer>
+</body>
 </html>

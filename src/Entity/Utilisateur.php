@@ -7,9 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -70,6 +74,11 @@ class Utilisateur
         return $this;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
     public function getRoles(): array
     {
         return $this->roles;
@@ -82,7 +91,7 @@ class Utilisateur
         return $this;
     }
 
-    public function getMotDePasse(): ?string
+    public function getPassword(): ?string
     {
         return $this->motDePasse;
     }
@@ -92,6 +101,16 @@ class Utilisateur
         $this->motDePasse = $motDePasse;
 
         return $this;
+    }
+
+    public function getMotDePasse(): ?string
+    {
+        return $this->motDePasse;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Si tu stockais un mot de passe en clair temporairement, tu le nettoierais ici
     }
 
     public function getPrenom(): ?string

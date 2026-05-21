@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - Crystal{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="flash-succes" style="background: #f8d7da; color: #721c24; border-left-color: #dc3545;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <p>Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Déconnexion</a></p>
+    {% endif %}
+
+    <h1>Connexion</h1>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
+    <label for="inputPassword">Mot de passe</label>
+    <input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+    <div style="margin: 1rem 0;">
+        <label>
+            <input type="checkbox" name="_remember_me"> Se souvenir de moi
+        </label>
+    </div>
+
+    <button class="btn" type="submit">Se connecter</button>
+</form>
+{% endblock %}
