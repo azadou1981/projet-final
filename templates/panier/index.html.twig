@@ -1,44 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier - Crystal{% endblock %}
+{% block title %}Panier - CRYSTAL{% endblock %}
 
 {% block body %}
-<h1>Mon panier</h1>
+<h1>Mon <span class="or">Panier</span></h1>
 
 {% if panier is empty %}
-    <p>Votre panier est vide.</p>
-    <a href="{{ path('app_boutique') }}" class="btn">Voir la boutique</a>
+    <div class="empty-state">
+        <div class="emoji">🛒</div>
+        <p>Votre panier est vide</p>
+        <a href="{{ path('app_boutique') }}" class="btn">Découvrir la boutique →</a>
+    </div>
 {% else %}
-    <table class="panier-table">
-        <thead>
-            <tr>
-                <th>Produit</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in panier %}
-            <tr>
-                <td>{{ item.produit.nom }}</td>
-                <td>{{ item.produit.prix }} €</td>
-                <td>{{ item.quantite }}</td>
-                <td>{{ item.total }} €</td>
-                <td><a href="{{ path('app_panier_supprimer', {'id': item.produit.id}) }}" class="btn-supprimer">Supprimer</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3"><strong>Total</strong></td>
-                <td><strong>{{ total }} €</strong></td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="table-wrapper">
+        <table class="panier-table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in panier %}
+                <tr>
+                    <td><strong style="color: var(--blanc); text-transform: uppercase; font-size: 0.85rem;">{{ item.produit.nom }}</strong></td>
+                    <td>{{ item.produit.prix }} €</td>
+                    <td>{{ item.quantite }}</td>
+                    <td><strong style="color: var(--or);">{{ item.total }} €</strong></td>
+                    <td><a href="{{ path('app_panier_supprimer', {'id': item.produit.id}) }}" class="btn-supprimer">✕</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td colspan="2"><strong style="font-size: 1.3rem; color: var(--or);">{{ total }} €</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
-    <a href="{{ path('app_panier_commander') }}" class="btn">Commander</a>
+    <div class="panier-actions">
+        <a href="{{ path('app_boutique') }}" class="btn-outline">← Continuer</a>
+        <a href="{{ path('app_panier_commander') }}" class="btn">Commander →</a>
+    </div>
 {% endif %}
 {% endblock %}

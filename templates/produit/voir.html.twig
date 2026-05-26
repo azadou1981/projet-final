@@ -1,18 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ produit.nom }} - Crystal{% endblock %}
+{% block title %}{{ produit.nom }} - CRYSTAL{% endblock %}
 
 {% block body %}
 <div class="produit-detail">
     <div class="produit-image">
-        <img src="{{ produit.image ? asset('uploads/' ~ produit.image) : 'https://placehold.co/500x500' }}" alt="{{ produit.nom }}">
+        <img src="{{ produit.image ? asset('uploads/' ~ produit.image) : 'https://placehold.co/600x600/111111/555?text=' ~ produit.nom }}" alt="{{ produit.nom }}">
     </div>
     <div class="produit-infos">
         <h1>{{ produit.nom }}</h1>
-        <p class="prix">{{ produit.prix }} €</p>
-        <p>{{ produit.description }}</p>
-        <p><strong>Stock :</strong> {{ produit.stock }}</p>
-        <a href="{{ path('app_panier_ajouter', {'id': produit.id}) }}" class="btn">Ajouter au panier</a>
+        <div class="prix">{{ produit.prix }} €</div>
+        <p class="description">{{ produit.description }}</p>
+        {% if produit.stock > 0 %}
+            <div class="stock-info {% if produit.stock < 5 %}faible{% endif %}">
+                {% if produit.stock < 5 %}
+                    ⚡ Plus que {{ produit.stock }} en stock
+                {% else %}
+                    ✓ En stock ({{ produit.stock }} disponibles)
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="stock-info" style="border-color: #ff4444;">
+                ✗ Rupture de stock
+            </div>
+        {% endif %}
+        <a href="{{ path('app_panier_ajouter', {'id': produit.id}) }}" class="btn">Ajouter au panier →</a>
     </div>
 </div>
 {% endblock %}

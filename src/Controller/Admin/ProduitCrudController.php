@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 #[AsCrudController(dashboard: DashboardController::class)]
@@ -28,7 +29,12 @@ class ProduitCrudController extends AbstractCrudController
             TextareaField::new('description', 'Description')->hideOnIndex(),
             NumberField::new('prix', 'Prix (€)')->setNumDecimals(2),
             IntegerField::new('stock', 'Stock'),
-            TextField::new('image', 'Image')->hideOnIndex(),
+            ImageField::new('image', 'Image')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+                ->setRequired(false)
+                ->hideOnIndex(),
             DateTimeField::new('dateCreation', 'Créé le')->hideOnForm(),
         ];
     }

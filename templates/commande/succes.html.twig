@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commande confirmée - Crystal{% endblock %}
+{% block title %}Commande confirmée - CRYSTAL{% endblock %}
 
 {% block body %}
 <div class="succes-page">
-    <h1>Merci pour votre commande ! 🎉</h1>
-    <p>Commande n°<strong>{{ commande.id }}</strong></p>
-    <p>Total : <strong>{{ commande.total }} €</strong></p>
-    <p>Statut : {{ commande.statut }}</p>
-    <a href="{{ path('app_boutique') }}" class="btn">Continuer mes achats</a>
+    <div class="icone">💎</div>
+    <h1>Commande <span class="or">confirmée</span> !</h1>
+    <p>Commande n°<strong style="color: var(--or);">#{{ commande.id }}</strong></p>
+    <p>Total : <strong style="color: var(--or); font-size: 1.5rem;">{{ commande.total }} €</strong></p>
+    <a href="{{ path('app_boutique') }}" class="btn">Continuer mes achats →</a>
 </div>
 {% endblock %}

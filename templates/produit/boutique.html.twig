@@ -1,18 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Boutique - Crystal{% endblock %}
+{% block title %}Boutique - CRYSTAL{% endblock %}
 
 {% block body %}
-<h1>Notre boutique</h1>
+<h1>La <span class="or">Boutique</span></h1>
 <div class="produits-grille">
     {% for produit in produits %}
         <article class="produit-carte">
             <a href="{{ path('app_produit_voir', {'id': produit.id}) }}">
-                <img src="{{ produit.image ? asset('uploads/' ~ produit.image) : 'https://placehold.co/300x300' }}" alt="{{ produit.nom }}">
+                <div class="image-wrapper">
+                    <img src="{{ produit.image ? asset('uploads/' ~ produit.image) : 'https://placehold.co/400x400/111111/555?text=' ~ produit.nom }}" alt="{{ produit.nom }}">
+                </div>
             </a>
-            <h3>{{ produit.nom }}</h3>
-            <p class="prix">{{ produit.prix }} €</p>
-            <a href="{{ path('app_produit_voir', {'id': produit.id}) }}" class="btn-petit">Détails</a>
+            <div class="card-body">
+                <h3>{{ produit.nom }}</h3>
+                <div class="prix">{{ produit.prix }} €</div>
+                <div class="card-footer">
+                    <a href="{{ path('app_produit_voir', {'id': produit.id}) }}" class="btn-petit">Détails</a>
+                    <a href="{{ path('app_panier_ajouter', {'id': produit.id}) }}" class="btn-outline">+</a>
+                </div>
+            </div>
         </article>
     {% endfor %}
 </div>
