@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Entity\Utilisateur;
 use App\Service\GestionnairePanier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,8 +23,11 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('app_boutique');
         }
 
+        /** @var Utilisateur $utilisateur */
+        $utilisateur = $this->getUser();
+
         $commande = new Commande();
-        $commande->setUtilisateur($this->getUser());
+        $commande->setUtilisateur($utilisateur);
         $commande->setTotal($gestionnairePanier->getTotal());
 
         foreach ($panier as $item) {
@@ -42,7 +46,11 @@ class CommandeController extends AbstractController
     #[Route('/commande/{id}/succes', name: 'app_commande_succes')]
     public function succes(Commande $commande): Response
     {
-        if ($commande->getUtilisateur()->getId() !== $this->getUser()->getId()) {
+        /** @var Utilisateur $utilisateur */
+        $utilisateur = $this->getUser();
+
+        $commandeUtilisateur = $commande->getUtilisateur();
+        if (!$commandeUtilisateur || $commandeUtilisateur->getId() !== $utilisateur->getId()) {
             throw $this->createAccessDeniedException();
         }
 
@@ -56,7 +64,9 @@ class CommandeController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
-        $commandes = $this->getUser()->getCommandes();
+        /** @var Utilisateur $utilisateur */
+        $utilisateur = $this->getUser();
+        $commandes = $utilisateur->getCommandes();
 
         return $this->render('commande/mes_commandes.html.twig', [
             'commandes' => $commandes,
