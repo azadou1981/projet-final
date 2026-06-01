@@ -1,0 +1,50 @@
+/* ===== HEADER ===== */
+header {
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 168, 67, 0.1);
+    color: var(--blanc);
+    padding: 0.6rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header .conteneur {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition); }
+header a:hover { color: var(--or); }
+header .logo { display: flex; align-items: center; }
+header .logo img { height: 5rem; width: auto; display: block; filter: drop-shadow(0 0 10px rgba(212,168,67,0.2)); }
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+header nav a {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 0;
+    transition: var(--transition);
+    position: relative;
+}
+header nav a:hover {
+    color: var(--or-brillant);
+    background: rgba(212, 168, 67, 0.08);
+}
+header nav a.actif { color: var(--or); }
+.badge-panier {
+    background: var(--or);
+    color: var(--noir);
+    padding: 1px 7px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 0;
+    margin-left: 4px;
+}

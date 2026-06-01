@@ -1,0 +1,49 @@
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== VARIABLES STREETWEAR ===== */
+:root {
+    --noir-profond: #0a0a0a;
+    --noir: #111111;
+    --noir-clair: #1a1a1a;
+    --gris-fonce: #222222;
+    --gris: #555555;
+    --gris-clair: #333333;
+    --blanc: #ffffff;
+    --blanc-casse: #e8e8e8;
+    --or: #d4a843;
+    --or-fonce: #b8922e;
+    --or-brillant: #f0c850;
+    --dorure: linear-gradient(135deg, #d4a843, #f0c850, #d4a843);
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ombre: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* ===== GÉNÉRAL ===== */
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--blanc-casse);
+    background: var(--noir-profond);
+    -webkit-font-smoothing: antialiased;
+}
+.conteneur { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== TYPOGRAPHIE ===== */
+h1, h2, h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+h1 { 
+    font-size: 3rem; 
+    text-align: center; 
+    margin: 2.5rem 0; 
+    color: var(--blanc); 
+}
+h1 span.or, .text-or { background: var(--dorure); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.couleur-or { color: var(--or); }
+h2 { font-size: 2rem; margin: 2rem 0 1.5rem; }
+h3 { font-size: 1.2rem; }
+p { color: var(--gris); }

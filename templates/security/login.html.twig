@@ -9,10 +9,10 @@
     {% endif %}
 
     {% if app.user %}
-        <p>Connecté en tant que <strong style="color: var(--or);">{{ app.user.userIdentifier }}</strong></p>
-        <a href="{{ path('app_logout') }}" class="btn" style="margin-top: 1rem;">Déconnexion</a>
+        <p>Connecté en tant que <strong class="couleur-or">{{ app.user.userIdentifier }}</strong></p>
+        <a href="{{ path('app_logout') }}" class="btn btn-mt">Déconnexion</a>
     {% else %}
-        <h1 style="margin-top: 0;">Connexion</h1>
+        <h1>Connexion</h1>
 
         <form method="post">
             <div class="form-group">
@@ -35,8 +35,8 @@
             <button class="btn" type="submit">Se connecter →</button>
         </form>
 
-        <p style="text-align: center; margin-top: 1.5rem; color: var(--gris);">
-            Pas encore de compte ? <a href="{{ path('app_register') }}" style="color: var(--or); font-weight: 600;">S'inscrire</a>
+        <p class="form-lien">
+            Pas encore de compte ? <a href="{{ path('app_register') }}" class="lien-or">S'inscrire</a>
         </p>
     {% endif %}
 </div>

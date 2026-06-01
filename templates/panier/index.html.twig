@@ -26,10 +26,10 @@
             <tbody>
                 {% for item in panier %}
                 <tr>
-                    <td><strong style="color: var(--blanc); text-transform: uppercase; font-size: 0.85rem;">{{ item.produit.nom }}</strong></td>
+                    <td><strong class="produit-nom">{{ item.produit.nom }}</strong></td>
                     <td>{{ item.produit.prix }} €</td>
                     <td>{{ item.quantite }}</td>
-                    <td><strong style="color: var(--or);">{{ item.total }} €</strong></td>
+                    <td><strong class="prix-or">{{ item.total }} €</strong></td>
                     <td><a href="{{ path('app_panier_supprimer', {'id': item.produit.id}) }}" class="btn-supprimer">✕</a></td>
                 </tr>
                 {% endfor %}
@@ -37,7 +37,7 @@
             <tfoot>
                 <tr>
                     <td colspan="3"><strong>Total</strong></td>
-                    <td colspan="2"><strong style="font-size: 1.3rem; color: var(--or);">{{ total }} €</strong></td>
+                    <td colspan="2"><strong class="total-or">{{ total }} €</strong></td>
                 </tr>
             </tfoot>
         </table>

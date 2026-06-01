@@ -1,0 +1,30 @@
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .produits-grille { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
+@media (max-width: 768px) {
+    header .conteneur { flex-direction: column; gap: 0.6rem; }
+    header nav { flex-wrap: wrap; justify-content: center; }
+    header nav a { padding: 0.3rem 0.6rem; font-size: 0.7rem; }
+    header .logo img { height: 4rem; }
+    .hero { padding: 5rem 1.5rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .hero h1 span.or { font-size: 3rem; }
+    .hero p { font-size: 0.8rem; }
+    h1 { font-size: 2rem; }
+    .produits-section .section-titre { font-size: 1.8rem; }
+    .produits-grille { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+    .produit-carte .image-wrapper { height: 220px; }
+    .produit-detail {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    .produit-detail h1 { font-size: 1.5rem; }
+    .stats { grid-template-columns: 1fr; }
+    .panier-table { font-size: 0.8rem; }
+    .panier-table th, .panier-table td { padding: 0.7rem 0.5rem; }
+    .form-card { padding: 1.5rem; margin: 1rem; }
+    footer .footer-links { flex-wrap: wrap; gap: 1rem; }
+}

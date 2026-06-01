@@ -25,16 +25,16 @@
             <tbody>
                 {% for commande in commandes %}
                 <tr>
-                    <td><strong style="color: var(--or);">#{{ commande.id }}</strong></td>
+                    <td><strong class="numero-commande">#{{ commande.id }}</strong></td>
                     <td>{{ commande.dateCreation|date('d/m/Y') }}</td>
                     <td>{{ commande.total }} €</td>
                     <td>
                         {% if commande.statut == 'en_attente' %}
-                            <span style="background: rgba(212,168,67,0.1); color: var(--or); padding: 0.2rem 0.8rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(212,168,67,0.3);">En attente</span>
+                            <span class="statut-en-attente">En attente</span>
                         {% elseif commande.statut == 'validée' %}
-                            <span style="background: rgba(255,255,255,0.05); color: var(--blanc-casse); padding: 0.2rem 0.8rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--gris-clair);">Validée ✓</span>
+                            <span class="statut-validee">Validée ✓</span>
                         {% elseif commande.statut == 'expédiée' %}
-                            <span style="background: rgba(212,168,67,0.1); color: var(--or-brillant); padding: 0.2rem 0.8rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(212,168,67,0.3);">Expédiée 🚚</span>
+                            <span class="statut-expediee">Expédiée 🚚</span>
                         {% else %}
                             {{ commande.statut }}
                         {% endif %}

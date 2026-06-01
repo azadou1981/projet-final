@@ -1,0 +1,141 @@
+/* ===== GRILLE PRODUITS ===== */
+.produits-section { padding: 1rem 0 4rem; }
+.produits-section .section-titre {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+.produits-section .section-titre::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--or);
+    margin: 1rem auto 0;
+}
+.produits-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.produit-carte {
+    background: var(--noir);
+    border: 1px solid var(--gris-clair);
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.produit-carte:hover {
+    border-color: var(--or);
+    transform: translateY(-4px);
+    box-shadow: var(--ombre);
+}
+.produit-carte .image-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    background: var(--noir-clair);
+    border-bottom: 1px solid var(--gris-clair);
+}
+.produit-carte .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    image-rendering: auto;
+}
+.produit-carte:hover .image-wrapper img { transform: scale(1.05); }
+.produit-carte .card-body {
+    padding: 1.2rem 1.2rem 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.produit-carte h3 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+    color: var(--blanc);
+}
+.produit-carte .prix {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--or);
+    margin-bottom: 0.8rem;
+}
+.produit-carte .card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--gris-clair);
+}
+
+/* ===== DÉTAIL PRODUIT ===== */
+.produit-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--noir);
+    border: 1px solid var(--gris-clair);
+}
+.produit-detail .produit-image {
+    overflow: hidden;
+    background: var(--noir-clair);
+    border: 1px solid var(--gris-clair);
+}
+.produit-detail .produit-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.produit-detail .produit-image:hover img { transform: scale(1.03); }
+.produit-detail h1 {
+    text-align: left;
+    margin: 0 0 0.5rem;
+    font-size: 2.2rem;
+}
+.produit-detail .prix {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--or);
+    margin: 1rem 0;
+}
+.produit-detail .description {
+    color: var(--gris);
+    line-height: 1.7;
+    margin: 1rem 0;
+}
+.produit-detail .stock-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255,255,255,0.05);
+    color: var(--blanc-casse);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--gris-clair);
+}
+.produit-detail .stock-info.faible {
+    color: var(--or);
+    border-color: rgba(212,168,67,0.3);
+}
+.produit-detail .btn { margin-top: 1.5rem; }
+.produit-detail .stock-info.rupture { border-color: #ff4444; }

@@ -1,0 +1,65 @@
+/* ===== BOUTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--dorure);
+    color: var(--noir);
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 168, 67, 0.3);
+}
+.btn:active { transform: translateY(0); }
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    color: var(--blanc);
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: var(--transition);
+    border: 1px solid var(--gris-clair);
+}
+.btn-outline:hover {
+    border-color: var(--or);
+    color: var(--or);
+}
+
+.btn-petit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    color: var(--blanc);
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: var(--transition);
+    border: 1px solid var(--gris-clair);
+}
+.btn-petit:hover {
+    background: var(--blanc);
+    color: var(--noir);
+    border-color: var(--blanc);
+}

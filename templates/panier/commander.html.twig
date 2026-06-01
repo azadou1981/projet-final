@@ -17,7 +17,7 @@
         <tbody>
             {% for item in panier %}
             <tr>
-                <td><strong style="color: var(--blanc); text-transform: uppercase;">{{ item.produit.nom }}</strong></td>
+                <td><strong class="produit-nom">{{ item.produit.nom }}</strong></td>
                 <td>{{ item.quantite }}</td>
                 <td>{{ item.total }} €</td>
             </tr>
@@ -27,7 +27,7 @@
             <tr>
                 <td><strong>Total</strong></td>
                 <td></td>
-                <td><strong style="font-size: 1.3rem; color: var(--or);">{{ total }} €</strong></td>
+                <td><strong class="total-or">{{ total }} €</strong></td>
             </tr>
         </tfoot>
     </table>

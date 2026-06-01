@@ -1,0 +1,24 @@
+/* ===== STATS ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.stat-carte {
+    background: var(--noir);
+    border: 1px solid var(--gris-clair);
+    padding: 2.5rem;
+    text-align: center;
+    transition: var(--transition);
+}
+.stat-carte:hover {
+    border-color: var(--or);
+    transform: translateY(-3px);
+}
+.stat-carte h3 {
+    font-size: 3rem;
+    color: var(--or);
+    margin-bottom: 0.3rem;
+}
+.stat-carte p { color: var(--gris); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }

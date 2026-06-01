@@ -1,0 +1,94 @@
+/* ===== TABLEAU ===== */
+.table-wrapper {
+    background: var(--noir);
+    border: 1px solid var(--gris-clair);
+    margin: 2rem 0;
+}
+.panier-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.panier-table thead {
+    background: var(--noir-clair);
+    border-bottom: 2px solid var(--or);
+}
+.panier-table th {
+    padding: 1rem;
+    text-align: left;
+    color: var(--or);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.panier-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gris-clair);
+    color: var(--blanc-casse);
+}
+.panier-table tbody tr { transition: background 0.2s; }
+.panier-table tbody tr:hover { background: rgba(212,168,67,0.03); }
+.panier-table tbody tr:last-child td { border-bottom: none; }
+.panier-table tfoot td {
+    padding: 1rem;
+    font-size: 1rem;
+    border-top: 2px solid var(--gris-clair);
+    color: var(--blanc);
+}
+.btn-supprimer {
+    color: #ff4444;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: var(--transition);
+}
+.btn-supprimer:hover { color: #ff6666; }
+.panier-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+/* ===== STATUTS COMMANDE ===== */
+.statut-en-attente {
+    background: rgba(212,168,67,0.1);
+    color: var(--or);
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(212,168,67,0.3);
+}
+.statut-validee {
+    background: rgba(255,255,255,0.05);
+    color: var(--blanc-casse);
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--gris-clair);
+}
+.statut-expediee {
+    background: rgba(212,168,67,0.1);
+    color: var(--or-brillant);
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(212,168,67,0.3);
+}
+
+/* ===== TABLEAU PANIER / COMMANDES ===== */
+.numero-commande { color: var(--or); }
+.produit-nom {
+    color: var(--blanc);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+.prix-or { color: var(--or); }
+.total-or {
+    font-size: 1.3rem;
+    color: var(--or);
+}

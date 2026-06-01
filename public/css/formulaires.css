@@ -1,0 +1,67 @@
+/* ===== FORMULAIRES ===== */
+.form-card {
+    background: var(--noir);
+    border: 1px solid var(--gris-clair);
+    padding: 3rem;
+    max-width: 480px;
+    margin: 2rem auto;
+}
+.form-card h1 { margin-top: 0; }
+form { width: 100%; }
+form .form-group { margin-bottom: 1.5rem; }
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blanc-casse);
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--gris-clair);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transition);
+    background: var(--noir-clair);
+    color: var(--blanc);
+    border-radius: 0;
+}
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: var(--or);
+    outline: none;
+    background: var(--noir);
+}
+form input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+    accent-color: var(--or);
+}
+form .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+form .checkbox-group label { margin: 0; font-weight: 400; text-transform: none; letter-spacing: normal; }
+form .btn { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+/* ===== FORMULAIRE AUTH ===== */
+.btn-mt { margin-top: 1rem; }
+.form-lien {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--gris);
+}
+.lien-or {
+    color: var(--or);
+    font-weight: 600;
+}

@@ -1,0 +1,20 @@
+/* ===== FLASH MESSAGES ===== */
+.flash-succes {
+    background: rgba(212,168,67,0.08);
+    color: var(--or);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 3px solid var(--or);
+    font-weight: 500;
+    font-size: 0.9rem;
+    animation: slideIn 0.4s ease;
+}
+.flash-error {
+    background: rgba(255,68,68,0.08);
+    color: #ff6666;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 3px solid #ff4444;
+    animation: slideIn 0.4s ease;
+    font-weight: 500;
+}

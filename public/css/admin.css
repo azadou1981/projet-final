@@ -1,0 +1,42 @@
+.admin-container { max-width: 900px; margin: 0 auto; }
+.admin-alert {
+    background: #e3f2fd;
+    border-left: 4px solid #1976d2;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}
+.admin-alert h4 { margin: 0 0 0.5rem; color: #1565c0; }
+.admin-alert p { margin: 0; color: #424242; }
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+.admin-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.admin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.admin-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.admin-card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: #333; }
+.admin-badge {
+    display: inline-block;
+    background: #ff9800;
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}

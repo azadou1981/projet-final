@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="form-card">
-    <h1 style="margin-top: 0;">Inscription</h1>
+    <h1>Inscription</h1>
 
     {{ form_errors(registrationForm) }}
 
@@ -27,8 +27,8 @@
         <button type="submit" class="btn">S'inscrire →</button>
     {{ form_end(registrationForm) }}
 
-    <p style="text-align: center; margin-top: 1.5rem; color: var(--gris);">
-        Déjà inscrit ? <a href="{{ path('app_login') }}" style="color: var(--or); font-weight: 600;">Se connecter</a>
+    <p class="form-lien">
+        Déjà inscrit ? <a href="{{ path('app_login') }}" class="lien-or">Se connecter</a>
     </p>
 </div>
 {% endblock %}

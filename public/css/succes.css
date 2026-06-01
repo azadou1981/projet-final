@@ -1,0 +1,15 @@
+/* ===== SUCCÈS ===== */
+.succes-page {
+    text-align: center;
+    padding: 6rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.succes-page .icone { font-size: 4rem; margin-bottom: 1.5rem; }
+.succes-page h1 { margin-bottom: 1rem; }
+.succes-page p { font-size: 1.1rem; margin: 0.5rem 0; color: var(--gris); }
+.succes-page .btn { margin-top: 2rem; }
+.succes-page .total-or {
+    color: var(--or);
+    font-size: 1.5rem;
+}

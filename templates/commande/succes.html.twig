@@ -6,8 +6,8 @@
 <div class="succes-page">
     <div class="icone">💎</div>
     <h1>Commande <span class="or">confirmée</span> !</h1>
-    <p>Commande n°<strong style="color: var(--or);">#{{ commande.id }}</strong></p>
-    <p>Total : <strong style="color: var(--or); font-size: 1.5rem;">{{ commande.total }} €</strong></p>
+    <p>Commande n°<strong class="couleur-or">#{{ commande.id }}</strong></p>
+    <p>Total : <strong class="total-or">{{ commande.total }} €</strong></p>
     <a href="{{ path('app_boutique') }}" class="btn">Continuer mes achats →</a>
 </div>
 {% endblock %}
